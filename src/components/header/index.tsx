@@ -1,12 +1,25 @@
+"use client";
+
 import Image from "next/image";
 import { Pacifico } from "next/font/google";
 import Link from "next/link";
 
 import { ChevronRight, User } from "react-feather";
+import { usePathname } from "next/navigation";
 
 const pacifico = Pacifico({ weight: "400", subsets: ["latin"] });
 
 export default function Header() {
+  const router = usePathname();
+
+  const getRoute = (routeIndex: number) => {
+    const test = router
+      .split("/")
+      .filter((item, i) => i != 0 && i <= routeIndex);
+
+    return test.join("/");
+  };
+
   return (
     <div className="flex px-[40px] items-center justify-between gap-3 headerShadow bg-[#fff] h-[80px]">
       <div className="flex gap-3 items-center select-none">
@@ -23,17 +36,27 @@ export default function Header() {
         <div className="w-[1px] h-[20px] rounded-lg bg-qq-light" />
 
         <div className="flex items-center gap-2">
-          <span className="text-sm font-semibold text-qq-title cursor-pointer hover:opacity-40 transition-all">
-            Home
-          </span>
-
-          <ChevronRight size={12} />
           <Link
-            href="/dashboard"
-            className="text-sm text-qq-description cursor-pointer hover:opacity-40 transition-all"
+            href={`/${router.split("/")[1]}`}
+            className="text-sm capitalize font-semibold text-qq-title cursor-pointer hover:opacity-40 transition-all"
           >
-            Dashboard
+            {router.split("/")[1]}
           </Link>
+
+          {router.split("/").map((item, i) => {
+            if (i > 1)
+              return (
+                <>
+                  <ChevronRight size={12} />
+                  <Link
+                    href={`/${getRoute(i)}`}
+                    className="text-sm capitalize text-qq-description cursor-pointer hover:opacity-40 transition-all"
+                  >
+                    {item}
+                  </Link>
+                </>
+              );
+          })}
         </div>
       </div>
 

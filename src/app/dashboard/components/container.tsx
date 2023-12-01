@@ -1,5 +1,6 @@
 import { Order } from "@/app/types/Product";
 import OrderCard from "./orderCard";
+import Link from "next/link";
 
 interface ContainerProps {
   data: Order[] | null;
@@ -43,9 +44,12 @@ export default function Container({ data }: Readonly<ContainerProps>) {
           )}
         </div>
 
-        <button className="bg-qq-green text-[#fff] font-semibold text-sm h-[55px] rounded-md hover:brightness-110 transition-all duration-200">
+        <Link
+          href={"/dashboard/details"}
+          className="bg-qq-green flex items-center justify-center text-[#fff] font-semibold text-sm h-[55px] rounded-md hover:brightness-110 transition-all duration-200"
+        >
           Finalizar pedido
-        </button>
+        </Link>
       </div>
 
       <div className="flex flex-col gap-6 laptop:max-w-[400px]">

@@ -12,9 +12,7 @@ export default function Login() {
     <div className="animate-fadeIn">
       <Header />
       <div className="flex flex-1 min-h-[calc(100vh-80px)] bg-qq-background">
-        <div className="hidden laptop:flex bg-slate-800 h-[calc(100vh-80px)] w-1/2">
-          s
-        </div>
+        <div className="hidden laptop:flex bg-slate-800 h-[calc(100vh-80px)] w-1/2 bg-[url('https://images.pexels.com/photos/19310481/pexels-photo-19310481.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')]" />
 
         <div className="flex flex-1 items-center justify-center h-[calc(100vh-80px)]">
           <div className="flex flex-col gap-6 items-center w-[400px]">
