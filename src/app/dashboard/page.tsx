@@ -1,10 +1,12 @@
+"use-client";
+
 import Header from "@/components/header";
 import Container from "./components/container";
 
 import FakeData from "@/app/data/dashboard.json";
 import { Order } from "../types/Product";
 
-export default function Dashboard() {
+export default async function Dashboard() {
   return (
     <div>
       <Header />

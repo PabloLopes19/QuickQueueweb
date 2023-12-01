@@ -9,9 +9,9 @@ export default function Container({ data }: Readonly<ContainerProps>) {
   const pendentes = data!.filter((item) => item.status === "pendente");
 
   return (
-    <div className="flex flex-row flex-1 gap-6 w-full max-h-[1200px] max-w-[2400px] bg-[#fff] p-[40px] rounded-[9px]">
-      <div className="flex flex-1 flex-col gap-3">
-        <h1 className="text-lg font-semibold text-qq-title select-none">
+    <div className="flex flex-col-reverse laptop:flex-row flex-1 gap-6 w-full min-h-full max-w-[1800px] bg-[#fff] p-[40px] rounded-[9px]">
+      <div className="flex flex-1 w-full flex-col gap-3">
+        <h1 className="text-base text-qq-description font-semibold select-none">
           Pedido atual
         </h1>
 
@@ -48,18 +48,18 @@ export default function Container({ data }: Readonly<ContainerProps>) {
         </button>
       </div>
 
-      <div className="flex flex-col gap-6 w-[400px]">
+      <div className="flex flex-col gap-6 laptop:max-w-[400px]">
         <div className="flex flex-col gap-3 w-full">
           <h1 className="font-semibold text-qq-description select-none">
             Novo pedido
           </h1>
 
-          <div className="flex items-center justify-center bg-[#F8F8F8] p-[10px] rounded-[18px] w-full">
+          <div className="flex items-center justify-center bg-[#F8F8F8] p-[20px] rounded-[18px] w-full">
             {pendentes.length != 0 ? <OrderCard data={pendentes[0]} /> : null}
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 w-full h-full">
+        <div className="flex flex-col h-[200px] gap-3 w-full">
           <div className="flex items-center justify-between w-full">
             <h1 className="font-semibold text-qq-description select-none">
               Fila atual
@@ -70,8 +70,8 @@ export default function Container({ data }: Readonly<ContainerProps>) {
             </span>
           </div>
 
-          <div className="flex items-center min-h-[200px] flex-col gap-3 justify-center bg-[#F8F8F8] no-scrollbar p-[20px] rounded-[18px] h-[600px] w-full">
-            <div className="flex flex-col rounded-[9px] gap-3 overflow-y-scroll no-scrollbar">
+          <div className="flex items-center flex-1 flex-col h-[200px] gap-3 justify-center bg-[#F8F8F8] no-scrollbar p-[20px] rounded-[18px] w-full">
+            <div className="flex flex-col rounded-[9px] gap-3 h-full w-full overflow-y-scroll no-scrollbar">
               {data
                 ?.filter((item) => item.status !== "pendente")
                 .map((order) => (
